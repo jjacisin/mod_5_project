@@ -4,32 +4,34 @@ from dash.dependencies import Input, Output
 
 
 app.layout = html.Div([
-    html.H1('DO GOOGLE SEARCHES PREDICT CHANGES TO THE UNEMPLOYMENT RATE?'),
+    html.H1('CAN GOOGLE SEARCHES PREDICT CHANGES TO THE UNEMPLOYMENT RATE?'),
     html.Div([
-        html.H2('Initial Time Series Analysis'),
+        html.H2('The Unemployment Rate (UER)'),
        dcc.Tabs(id="tabs", children=[
-            dcc.Tab(id='unemployment_ts', label='Traditional Time Series',
+            dcc.Tab(id='uer_1', label='All UER',
                 children=[
                 dcc.Graph(figure=
-                {'data': initial_display_ue,
-                'layout': {'title':'Initial Dataset'},
+                {'data': [ue_initial_display],
+                'layout': {'title':'Raw UER'},
                 })
                 ]
             ),
-            # # dcc.Tab(id='Felony', label='Felony Complaints',
-            #     children=[
-            #     dcc.Graph(figure=
-            #     {'data': level_graph_creator_all("Felony")+level_graph_all_boroughs(boroughs,month_names,"Felony"),
-            #     'layout': {'title':'Felonies'}})
-            #     ]
-            # ),
-            # dcc.Tab(id='Misdemeanor', label='Misdemeanor Complaints',
-            #     children=[
-            #     dcc.Graph(figure=
-            #     {'data': level_graph_creator_all("Misdemeanor")+level_graph_all_boroughs(boroughs,month_names,"Misdemeanor"),
-            #     'layout': {'title':'Misdemeanors'}})
-            #     ]
-            # ),
+            dcc.Tab(id='uer_2', label='In Scope UER',
+                children=[
+                dcc.Graph(figure=
+                {'data': [ue_in_scope_display],
+                'layout': {'title':'UER Since 2005'},
+                })
+                ]
+            ),
+            dcc.Tab(id='uer_3', label='Standardized UER',
+                children=[
+                dcc.Graph(figure=
+                {'data':[ue_in_scope_display,ue_standardized_data],
+                'layout': {'title':'UER - 12M Rolling Mean'},
+                })
+                ]
+            ),
             # dcc.Tab(id='Violation', label='Violation Complaints',
                 # children=[
                 # dcc.Graph(figure=
