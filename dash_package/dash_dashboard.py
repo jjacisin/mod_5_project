@@ -1,5 +1,6 @@
 from dash_package.dash_queries import *
 from dash.dependencies import Input, Output
+import dash_table
 
 
 
@@ -27,10 +28,14 @@ app.layout = html.Div([
             dcc.Tab(id='uer_3', label='Standardized UER',
                 children=[
                 dcc.Graph(figure=
-                {'data':[ue_in_scope_display,ue_standardized_data],
+                {'data':[ue_in_scope_display,ue_rolmean,ue_standardized_data,ue_rolstd],
                 'layout': {'title':'UER - 12M Rolling Mean'},
-                })
-                ]
+                }),
+                dash_table.DataTable(
+                id='table',
+                columns=[{"name": i, "id": i} for i in df_ue_adfuller.columns],
+                data=[df_ue_adfuller.to_dict("data")['Results']],
+                )]
             ),
             # dcc.Tab(id='Violation', label='Violation Complaints',
                 # children=[
