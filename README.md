@@ -8,7 +8,7 @@
 ## Motivation
 
 *Macroeconomic Metrics:*
-- Global: A way to analyze the way the world turns through the way it trades and interacts with its largest members 
+- Global: A way to analyze the way the world turns through the way it trades and interacts with its largest members
 - National: Analyzing the economic metrics of a distinct sovereignty to build a picture of fiscal well-being
 
 *The Unemployment Rate:*
@@ -22,19 +22,19 @@
 
 ***
 
-## Outcome: 
+## Outcome:
 
 *We can improve our the prediction the unemployment rate by **~25%**, using a SARIMAX model with exogenous job search data*
 
 ***
 
-## Project Summary 
+## Project Summary
 
 *Initial Model*
 - Apply an ARIMA time series model to the U.S. unemployment rate to determine to establish a baseline comparison to the other models
 
 *Internet Keyword Model*
-- Using Google Trends, obtain information on the frequency of U.S. searches related to the keyword “job”	
+- Using Google Trends, obtain information on the frequency of U.S. searches related to the keyword “job”
 - Create an ARIMA time series model using the Google Trend information to determine the predictability of the keyword data
 
 *SARIMAX Exogenous Model*
@@ -78,19 +78,6 @@ df_UE.head()
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -179,7 +166,7 @@ def test_stationarity(timeseries,window=12):
     plt.legend(loc='best')
     plt.title('Rolling Mean & Standard Deviation')
     plt.show()
-    
+
     #Perform Dickey-Fuller test:
     print('Results of Dickey-Fuller Test:')
     dftest = adfuller(timeseries, autolag='AIC')
@@ -211,7 +198,7 @@ test_stationarity(df_UE.SA_Unemployment_Rate)
 
 - Test Statistic/p-value vs. Critical Values
     - Statistical test to determine the amount of confidence the information
-    - If the Test Statistic is less than a given Critical Value, we can be X% confident the data set is stationary 
+    - If the Test Statistic is less than a given Critical Value, we can be X% confident the data set is stationary
 
 
 
@@ -280,19 +267,6 @@ df_UE.head()
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -438,7 +412,7 @@ plt.show()
 
 
 ```python
-def mean_absolute_percentage_error(y_pred, y_true): 
+def mean_absolute_percentage_error(y_pred, y_true):
     y_true, y_pred = np.array(y_true), np.array(y_pred)
     return np.mean(np.abs((y_true - y_pred) / y_true))
 ```
@@ -510,7 +484,7 @@ for comb in pdq:
         except:
             continue
 
-            
+
 ans_df = pd.DataFrame(ans, columns=['pdq', 'pdqs', 'aic'])
 ```
 
