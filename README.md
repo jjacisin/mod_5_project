@@ -16,7 +16,7 @@
 - Solution: Analyze a leading economic indicator and determine if a traditional metric can be improved through big data and machine learning
 
 *Cui Bono?*
-- Unemployment Rate and a health economy are highly correlated, predicting a drop in unemployment would help individuals and companies make investing decisions.
+- Unemployment Rate and a healthy economy are highly correlated, predicting a drop in unemployment would help individuals and companies make investing decisions.
 
 *I like this stuff*
 
